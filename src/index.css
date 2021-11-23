@@ -7,7 +7,63 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+#root{
+  padding: 4rem;
+}
+
+.article{
+  border: 1px #ff000066 solid;
+  padding: 1rem;
+}
+
+#root > div {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+button {
+  display: block;
+  background-color: transparent;
+  border: 1px black solid;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  margin: 0.5rem 0;
+}
+
+.logout {
+  background-color: #ff000066;
+  color: white;
+  transition: 0.5s all;
+}
+
+.logout:hover {
+  background-color:red;
+}
+
+.token{
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  color: white;
+  background-color: black;
+  font-size: 0.66rem;
+}
+
+form{
+  margin: 1rem;
+}
+
+label {
+  display:block;
+  margin-bottom: 0.5rem;
+}
+
+input, textarea{
+  width: 15rem;
+  border: 1px black solid;
+  padding: 0.5rem 1rem;
+  margin-bottom: 1rem;
 }
