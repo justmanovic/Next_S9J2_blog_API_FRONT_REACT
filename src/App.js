@@ -1,8 +1,10 @@
 import PostsList from "./components/PostsList";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import CreatePostForm from "./components/CreatePostForm";
 import LogInForm from "./components/LogInForm";
 import SignUpForm from "./components/SignUpForm";
+import WelcomeMessage from "./components/WelcomeMessage"
+import ConnexionButtons from "./components/ConnexionButtons"
 
 function App() {
   const [newPostVisible, setNewPostVisible] = useState(false);
@@ -141,15 +143,8 @@ function App() {
 
   return (
     <>
-      {!token && (
-        <>
-          <button onClick={showSignUp}>SIGNUP</button>
-          <button onClick={showLogIn}>LOGIN</button>
-        </>
-      )}
-
-{token && <button onClick={logOut} className="logout">LOG OUT</button>}
-
+      
+      <ConnexionButtons showSignUp={showSignUp} showLogIn={showLogIn} logOut={logOut} token={token} />
 
       {signUpFormVisible && (
         <SignUpForm
@@ -158,6 +153,7 @@ function App() {
           setSignUpInfos={setSignUpInfos}
         />
       )}
+
       {logInFormVisible && (
         <LogInForm
           logIn={logIn}
@@ -166,8 +162,7 @@ function App() {
         />
       )}
 
-      
-        {(token &&<p> Connecté en tant que <b>{localStorage.getItem('email')}</b></p> ) || <p>Vous n'êtes pas connecté</p>}
+        <WelcomeMessage token={token} />
      
       {token && <small className="token">{token}</small>}
       {token && <button onClick={showNewPostForm}>New Post</button>}

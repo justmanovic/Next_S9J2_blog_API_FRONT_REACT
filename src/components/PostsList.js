@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
+import Post from "./Post"
 
 const PostsList = ({ articles, token }) => {
+
 
   const deleteArticle = async(e, articleId) => {
     e.preventDefault()
@@ -19,14 +21,7 @@ const PostsList = ({ articles, token }) => {
   return (
     <div>
       <h2>Liste des articles</h2>
-      {articles.map((article) => (
-        <div className="article">
-          <h4>{article.title}</h4>
-          <p>{article.content}</p>
-          <small>User n°{article.user_id}</small>
-          <button onClick={(e)=>deleteArticle(e, article.id)}>Supprimer</button>
-        </div>
-      ))}
+      {articles.sort((a,b) => b.id - a.id).map((article) => <Post key={article.id} article={article} deleteArticle={deleteArticle} token={token} />)}
     </div>
   );
 };
