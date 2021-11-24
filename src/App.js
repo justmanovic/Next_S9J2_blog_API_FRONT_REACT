@@ -1,5 +1,5 @@
 import PostsList from "./components/PostsList";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import CreatePostForm from "./components/CreatePostForm";
 import LogInForm from "./components/LogInForm";
 import SignUpForm from "./components/SignUpForm";
@@ -149,8 +149,6 @@ function App() {
       )}
 
 {token && <button onClick={logOut} className="logout">LOG OUT</button>}
-
-
       {signUpFormVisible && (
         <SignUpForm
           signUp={signUp}

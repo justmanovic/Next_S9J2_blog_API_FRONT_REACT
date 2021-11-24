@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import Post from "./Post";
 
 const PostsList = ({ articles, token }) => {
 
@@ -9,7 +9,7 @@ const PostsList = ({ articles, token }) => {
         "Authorization": `Bearer ${token}`,
         "Content-Type": "application/json",
       },
-      method: "delete",
+      method: "DELETE",
     }
     const res = await fetch(`http://localhost:3000/articles/${articleId}`, configObject)
     const data = await res.json()
@@ -19,14 +19,7 @@ const PostsList = ({ articles, token }) => {
   return (
     <div>
       <h2>Liste des articles</h2>
-      {articles.map((article) => (
-        <div className="article">
-          <h4>{article.title}</h4>
-          <p>{article.content}</p>
-          <small>User n°{article.user_id}</small>
-          <button onClick={(e)=>deleteArticle(e, article.id)}>Supprimer</button>
-        </div>
-      ))}
+      {articles.map((article) => <Post key={Math.random().toString()} article={article} deleteArticle={deleteArticle} /> )}
     </div>
   );
 };
