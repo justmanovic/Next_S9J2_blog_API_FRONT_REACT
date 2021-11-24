@@ -11,7 +11,7 @@ const PostsList = ({ articles, token }) => {
         "Authorization": `Bearer ${token}`,
         "Content-Type": "application/json",
       },
-      method: "delete",
+      method: "DELETE",
     }
     const res = await fetch(`http://localhost:3000/articles/${articleId}`, configObject)
     const data = await res.json()
