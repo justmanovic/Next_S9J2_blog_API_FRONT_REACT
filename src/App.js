@@ -165,7 +165,7 @@ function App() {
       )}
 
       
-        {(token &&<p> Connecté en tant que <b>{localStorage.getItem('email')}</b></p> ) || <p>Vous n'êtes pas connecté</p>}
+      {(token &&<p> Connecté en tant que <b>{localStorage.getItem('email')}</b></p> ) || <p>Vous n'êtes pas connecté</p>}
      
       {token && <small className="token">{token}</small>}
       {token && <button onClick={showNewPostForm}>New Post</button>}
