@@ -1,10 +1,11 @@
 import PostsList from "./components/PostsList";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import CreatePostForm from "./components/CreatePostForm";
 import LogInForm from "./components/LogInForm";
 import SignUpForm from "./components/SignUpForm";
 import WelcomeMessage from "./components/WelcomeMessage"
 import ConnexionButtons from "./components/ConnexionButtons"
+import ContextProvider from "./store/ContextProvider";
 
 function App() {
   const [newPostVisible, setNewPostVisible] = useState(false);
@@ -20,6 +21,7 @@ function App() {
   const [signUpInfos, setSignUpInfos] = useState({ name:"", email: "", password: "" });
   const [articlesList, setArticlesList] = useState([]);
 
+
   const getArticles = async () => {
     const config = {
       method: "GET",
@@ -34,6 +36,7 @@ function App() {
   useEffect(() => {
     getArticles();
   }, []);
+
 
   const showSignUp = () => {
     setSignUpFormVisible(!signUpFormVisible);
@@ -142,8 +145,7 @@ function App() {
   };
 
   return (
-    <>
-      
+    <ContextProvider>
       <ConnexionButtons showSignUp={showSignUp} showLogIn={showLogIn} logOut={logOut} token={token} />
 
       {signUpFormVisible && (
@@ -163,7 +165,7 @@ function App() {
       )}
 
         <WelcomeMessage token={token} />
-     
+
       {token && <small className="token">{token}</small>}
       {token && <button onClick={showNewPostForm}>New Post</button>}
       {newPostVisible && (
@@ -174,7 +176,7 @@ function App() {
         />
       )}
       <PostsList token={token} articles={articlesList} />
-    </>
+    </ContextProvider>
   );
 }
 
