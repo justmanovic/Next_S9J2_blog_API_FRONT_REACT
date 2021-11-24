@@ -1,8 +1,12 @@
-import { useState, useEffect } from "react";
+import {useContext} from "react"
+import MyContext from "../store/global";
+
 import Post from "./Post"
 
-const PostsList = ({ articles, token }) => {
+const PostsList = ({token }) => {
 
+  const ctx = useContext(MyContext)
+  const { articles } = ctx
 
   const deleteArticle = async(e, articleId) => {
     e.preventDefault()

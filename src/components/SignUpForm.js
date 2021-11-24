@@ -1,4 +1,11 @@
-const SignUpForm = ({ signUp, signUpInfos, setSignUpInfos }) => {
+import { useContext } from "react";
+import MyContext from "../store/global";
+
+const SignUpForm = () => {
+
+  const ctx = useContext(MyContext)
+  const {signUp, signUpInfos, setSignUpInfos} = ctx
+
   const updateInfo = (e, infoToUpdate) => {
     setSignUpInfos({ ...signUpInfos, [infoToUpdate]: e.target.value });
   };

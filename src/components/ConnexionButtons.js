@@ -1,4 +1,11 @@
-const ConnexionButtons = ({showSignUp, showLogIn, logOut, token }) => {
+import { useContext } from "react"
+import MyContext from "../store/global"
+
+const ConnexionButtons = () => {
+
+  const ctx = useContext(MyContext)
+  const {showSignUp, showLogIn, logOut, token} = ctx
+
   return (
     <>
       {!token && (

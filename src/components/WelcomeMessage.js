@@ -1,8 +1,9 @@
 import MyContext from "../store/global"
 import { useContext } from "react"
 
-const WelcomeMessage = ({token}) => {
+const WelcomeMessage = () => {
   const ctx = useContext(MyContext)
+  const {token} = ctx
   console.log(ctx)
   return (
     <>

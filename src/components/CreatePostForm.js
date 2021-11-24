@@ -1,4 +1,11 @@
-function CreatePostForm({ createPost, postInfos, setPostInfos }) {
+import { useContext } from "react";
+import MyContext from "../store/global";
+
+function CreatePostForm() {
+
+  const ctx = useContext(MyContext)
+  const { createPost, postInfos, setPostInfos } = ctx
+
   const updateInfo = (e, infoToUpdate) => {
     setPostInfos({ ...postInfos, [infoToUpdate]: e.target.value });
   };
